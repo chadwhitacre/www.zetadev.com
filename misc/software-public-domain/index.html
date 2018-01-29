@@ -1,0 +1,218 @@
+<html>
+<head>
+
+    <title>Zeta Design & Development</title>
+    <script type="text/javascript">
+        /* FOUC thwart -- http://www.bluerobot.com/web/css/fouc.asp */
+    </script>
+
+    <style>@import url("/style.css");</style>
+</head>
+<body>
+<div id="breadcrumbs">
+
+    <div class="for-spacing">&nbsp;</div>
+
+
+
+</div>
+<div id="content-wrapper"><div class="padding">
+
+    <a href="/" id="logo"><img src="/images/logo.png"
+                               alt=""
+                               title=""
+                               height="93"
+                               width="150" /></a>
+
+    <div id="contact-info">
+        1001 Merchant St, Ste 103<br />
+        Ambridge, PA 15003-2381<br />
+
+        www.zetaweb.com<br />
+        1-877-ZETAWEB<br />
+    </div>
+
+
+    <div id="content">
+
+        <h1>Software and the Public Domain</h1>
+
+        <p>by <a href="/">Chad Whitacre</a></p>
+
+        <p class="description">Can software be put in the public domain?
+        Probably.<br />Should it? Probably not.</p>
+
+        <p>Lately I've been trying to form an opinion on software copyright and
+        licensing, and one of the options I'm looking at is dedicating software
+        to the public domain. While other licensing options (GPL, BSD, etc.) are
+        fairly well staked out, I found some confusion in the community about
+        the public domain. Folks debate whether it is a good idea to dedicate
+        software to the public domain, of course&mdash;copyright and licensing
+        are perennial hot buttons. But some seem to question whether such
+        dedications are even possible at all.</p>
+
+        <div class="sidebar-right"><p>To illustrate their luminosity: Mr. Lessig
+        is chair of the <a href="http://www.creativecommons.org">Creative
+        Commons</a>, while Mr. Rosen has served as general counsel for the <a
+        href="http://www.opensource.org/">Open Source Initiative</a>.</p><p> See their
+        respective websites for further credentials.</p></div>
+
+        <p>This confusion stems in particular from various comments by <a
+        href="http://www.lessig.org/">Lawrence Lessig</a> and <a
+        href="http://www.rosenlaw.com/rosen.htm">Lawrence Rosen</a>, two of
+        cyberspace's brightest legal luminaries. Mr. Rosen <a
+        href="http://www.rosenlaw.com/lj16.htm">raises doubts about the
+        advisability and possibility of dedicating software to the public
+        domain</a>. On the other hand, the Creative Commons <a
+        href="http://creativecommons.org/licenses/publicdomain/">allows for
+        dedications to the public domain</a> (although their primary thrust is "some
+        rights reserved" licenses), and Mr. Lessig
+
+        <a href="http://linux.sys-con.com/read/38116.htm?CFID=176814">has
+
+        hinted that software in particular can indeed be dedicated to the
+        public domain</a> [note: find "public domain"].</p>
+
+        <p>After doing some homework, I contacted them both and asked if they
+        would clarify their understanding of software and the public domain for
+        us. Both kindly responded, and this document is my understanding of the
+        issue based on <a href="responses.html">their responses</a>, coupled
+        with some other resources. In particular, I would also like to
+        acknowledge the <a href="http://sqlite.org/support.html">sqlite-users
+        mailing list</a>, and especially Ulrick Petersen, for <a
+
+        href="http://comments.gmane.org/gmane.comp.db.sqlite.general/12313">their
+
+        contributions to the discussion</a>. In the end, though, the opinions in
+        this article are mine, and I am not a lawyer.</p>
+
+        <h3>What is the Public Domain?</h3>
+
+        <p>Dedicating something to the public domain means voluntarily giving up
+        your rights to it. This isn't actually a license, because a license
+        derives from ownership, from copyright. Licensing your intellectual
+        property is like renting out a car that you own, or loaning your car to
+        a friend. The car is still yours. Dedicating a work to the public domain
+        is more like abandoning your perfectly good car on the side of the road,
+        for any and all to use.</p>
+
+        <p>While this might seem a little crazy when talking about cars (unless
+        you believe in <a
+        href="http://www.imdb.com/title/tt0067185/">Maude</a>), it actually
+        makes some sense when talking about ideas. That's because intellectual
+        property escapes some of the limitations of physical property. In
+        particular, an idea can be in two places at once, or as <a
+        href="http://www.centerpd.org/quotes.htm">Thomas Jefferson put
+        it</a>:</p>
+
+        <blockquote>He who receives an idea from me, receives instruction
+        himself without lessening mine; as he who lights his taper at mine,
+        receives light without darkening me.</blockquote>
+
+        <p>For more background on the public domain, I recommend the
+        Creative Commons' <a
+            href="http://creativecommons.org/about/legal/">"Legal Concepts"
+            page</a>.</p>
+
+
+        <h3>Can Software Be Put in the Public Domain?</h3>
+
+        <p>Short answer: probably. When an author publishes a work, s/he is
+        automatically granted copyright in that intellectual property. Copyright
+        is the default setting. When the copyright expires (generally 70 years
+        after the author's death), the work reverts to the public domain. But in
+        order for a work to become part of the public domain before then, it
+        must be explicitly placed there.</p>
+
+        <p>The problem is that the mechanism for explicitly dedicating a work to
+        the public domain is not clearly spelled out in the law. The most
+        cautious interpretation of the situation, therefore, is that explicit
+        dedications to the public domain are not in fact possible. A more
+        moderate reading would say that the waters simply have yet to be
+        charted. After all, copyright has only been the default since 1989.
+        Before then works were assumed to be in the public domain unless
+        explicitly copyrighted.</p>
+
+        <p>Another issue with dedications to the public domain is that some
+        countries, Germany for instance, do not recognize forfeitures of
+        copyright at all. The author of a work has an inherent copyright that
+        cannot be disavowed. So at least for software projects with German
+        contributors, then, the answer would appear to be closer to, "No."</p>
+
+
+        <h3>Should Software Be Put in the Public Domain?</h3>
+
+        <p>Short answer: probably not. The primary consideration seems to be
+        that software has the potential to cause harm, and therefore exposes its
+        author to more liability than, say, the author of a book. Apparently,
+        disavowing ownership does not get you off the hook in the event that
+        your software does cause harm, although I don't know whether this has
+        been tested in court or not.</p>
+
+        <p>If you <em>retain</em> your copyright, however, and distribute your
+        software under a license, then that gives you the opportunity to
+        &ldquo;disclaim any warranty of merchantability or fitness for a
+        particular purpose,&rdquo; etc. This appears to be the crucial
+        distinction between public domain software and software that is licensed
+        under a so-called &ldquo;liberal&rdquo; license such as the <a
+        href="http://opensource.org/licenses/bsd-license.html">BSD</a> or <a
+        href="http://opensource.org/licenses/mit-license.html">MIT</a>
+
+        licenses, which otherwise share the characteristic that anyone can do
+        whatever they want with the software. And for this reason, <a
+        href="responses.html">both Mr. Rosen and Mr. Lessig recommend that if
+        this is your goal&mdash;to let anyone do whatever they want with your
+        software&mdash;you should use a liberal license instead of
+        dedicating it to the public domain</a>.</p>
+
+
+        <h3>Conclusion</h3>
+
+        <p>The conclusion I draw on both of these questions is that the
+        copyright and licensing options for your project will derive from your
+        risk tolerance with regard to the law (in balance with other factors,
+        such as the intended audience for your software). If you are confident
+        in the possibility of explicit dedications to the public domain, and are
+        willing to accept any possible liability that might exist by not
+        explicitly disclaiming liability via a license, then the public domain
+        will be an option for you. If you prefer to chart a safer course, then
+        you should consider a liberal license instead of a dedication to the
+        public domain.</p>
+
+        <p>If you do want to dedicate your software to the public domain, you
+        can use <a href="http://creativecommons.org/licenses/publicdomain/">the
+        process at the Creative Commons</a> to do so. For the record, <a
+        href="http://creativecommons.org/faq#faq_entry_3646">the Creative
+        Commons licenses are intended for non-software works, and they clearly
+        say so in their FAQ</a>. However, the public domain is not a license, it
+        is not peculiar to the Creative Commons, and the Creative Commons
+        mechanism is the clearest way I've found for performing a dedication.</p>
+
+        <p>In the end, the decision is yours to make&mdash;in consultation
+        with your attorney, of course.</p>
+
+        <hr />
+
+        <p><i>Chad Whitacre wanders around cyberspace looking for a way out.
+        This article was last modified in August, 2008; comments should go to
+        <a href="mailto:chad@zetaweb.com">chad@zetaweb.com</a>. This article is
+        dedicated to the public domain.</i></p>
+
+    </div>
+
+</div></div>
+<div id="firefox">
+
+    <a href="http://www.spreadfirefox.com/?q=affiliates&amp;id=40464&amp;t=84"
+       target="_blank">
+
+        <img border="0"
+             alt="Get Firefox!"
+             title="Get Firefox!"
+             src="/images/firefox.png" />
+
+    </a>
+
+</div>
+</body>
+</html>

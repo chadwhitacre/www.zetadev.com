@@ -1,0 +1,38 @@
+<!--#include file='inc/head.html' -->
+<h1>Appendix: Data Structures</h1>
+
+<ul>
+
+    <li><b>Array</b>&mdash;A sequence of items in contiguous address space.</li>
+
+    <li><b>Linked List</b>&mdash;A sequence of items <i>not</i> in contiguous
+    address space.</li>
+
+</ul>
+
+<ul>
+
+    <li><b>Queue</b>&mdash;A sequence where the first item "added" is the first
+    item "removed" (FIFO). Think: checkout line.</li>
+
+    <li><b>Stack</b>&mdash;A sequence where the last item "pushed" is the first
+    item "popped" (LIFO). Think: stack of plates in a spring-loaded cafeteria
+    stack.</li>
+
+    <li><b>Deque</b> ["deck"]&mdash;A sequence where items can be added/pushed
+    and removed/popped from either end.</li>
+
+</ul>
+
+<!--
+<ul>
+
+    <li><b>Binary Tree</b>
+
+    <li><b>Heap</b>&mdash;An almost-complete binary tree where any given path
+    is sorted low to high.</li>
+
+</ul>
+-->
+
+<!--#include file='inc/tail.html' -->

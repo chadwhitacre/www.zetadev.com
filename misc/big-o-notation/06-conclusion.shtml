@@ -1,0 +1,176 @@
+<!--#include file='inc/head.html' -->
+<h1>Conclusion</h1>
+
+<p>So now let's revisit the question we started with. We were looking at these
+two algorithms for copying strings:</p>
+
+<pre>
+def copy_concat(s):
+    """Copy a string via concatenation.
+    """
+    t = ""
+    for c in s:
+        t += c
+    return t
+
+def copy_join(s):
+    """Copy a string via list joining.
+    """
+    t = []
+    for c in s:
+        t.append(c)
+    return ''.join(t)
+</pre>
+
+<p>We know that the second is faster than the first, but how much faster? The
+answer is that the concatenation method is quadratic, O(n<sup>2</sup>), with
+regards to time, while the join method is linear, O(n). To fully understand why,
+we would have to look at their implementation at the C level. The reality is,
+however, demonstrated in this figure:</p>
+
+<img src="img/06-conclusion.copy-10000000.png"
+     alt="concat vs. join for n &lt;= 10000000" />
+<!--figure copy-10000000
+
+def genstr(i):
+    return 'O'*i
+
+rdef = dict()
+rdef['start'] = 0
+rdef['stop'] = 10000000
+rdef['step'] = 100000
+
+lineprops_concat = {'linewidth':2.0, 'color':'red'}
+lineprops_join = {'linewidth':2.0, 'color':'blue'}
+
+plot(*time_it(copy_concat, genstr, **rdef), **lineprops_concat)
+plot(*time_it(copy_join, genstr, **rdef), **lineprops_join)
+title( 'Two String Copying Algorithms Compared\n'
+     + '(longest string: %s bytes)' % commaize(rdef['stop'])
+      )
+axis(ymin=0, ymax=60.0)
+setp(xlabel('Input (bytes)'), fontweight='bold')
+setp(ylabel('Time (seconds)'), fontweight='bold')
+figtext(0.15, 0.83, "copy_concat", fontsize=12, color="red")
+figtext(0.15, 0.78, "copy_join", fontsize=12, color="blue")
+
+-->
+
+<p>But figures take interpretation. Notice the size of the strings where the
+difference starts to matter: upwards of several megabytes. Do you often copy
+strings that large? I don't. All of the strings I want to copy are a few bytes,
+rarely a kilobyte, and here there is no difference between these algorithms:</p>
+
+<img src="img/06-conclusion.copy-1000.png"
+     alt="concat vs. join for n &lt;= 1000" />
+<!--figure copy-1000
+
+def genstr(i):
+    return 'O'*i
+
+rdef = dict()
+rdef['start'] = 0
+rdef['stop'] = 1000
+rdef['step'] = 10
+
+lineprops_concat = {'linewidth':2.0, 'color':'red'}
+lineprops_join = {'linewidth':2.0, 'color':'blue'}
+
+plot(*time_it(copy_concat, genstr, **rdef), **lineprops_concat)
+plot(*time_it(copy_join, genstr, **rdef), **lineprops_join)
+title( 'Two String Copying Algorithms Compared\n'
+     + '(longest string: %s bytes)' % commaize(rdef['stop'])
+      )
+axis(ymin=0, ymax=0.01)
+setp(xlabel('Input (bytes)'), fontweight='bold')
+setp(ylabel('Time (seconds)'), fontweight='bold')
+figtext(0.15, 0.83, "copy_concat", fontsize=12, color="red")
+figtext(0.15, 0.78, "copy_join", fontsize=12, color="blue")
+
+-->
+
+
+<p>Where performance is a wash, we should prefer the more readable form; in
+this case, concatenation. But if we look further, we discover something even
+more interesting:</p>
+
+<img src="img/06-conclusion.copy-100000.png"
+     alt="concat vs. join for n &lt;= 100000" />
+<!--figure copy-100000
+
+def genstr(i):
+    return 'O'*i
+
+rdef = dict()
+rdef['start'] = 0
+rdef['stop'] = 100000
+rdef['step'] = 1000
+
+lineprops_concat = {'linewidth':2.0, 'color':'red'}
+lineprops_join = {'linewidth':2.0, 'color':'blue'}
+
+plot(*time_it(copy_concat, genstr, **rdef), **lineprops_concat)
+plot(*time_it(copy_join, genstr, **rdef), **lineprops_join)
+title( 'Two String Copying Algorithms Compared\n'
+     + '(longest string: %s bytes)' % commaize(rdef['stop'])
+      )
+axis(ymin=0, ymax=1)
+setp(xlabel('Input (bytes)'), fontweight='bold')
+setp(ylabel('Time (seconds)'), fontweight='bold')
+figtext(0.15, 0.83, "copy_concat", fontsize=12, color="red")
+figtext(0.15, 0.78, "copy_join", fontsize=12, color="blue")
+
+-->
+
+<p>When we look at inputs up to 100 kilobytes in size, we find that
+concatenation is actually <i>faster</i> than joining. What's going on here?
+Recall that the concatenation form is quadratic, O(n<sup>2</sup>), so it
+describes a curved line on our graph. The join form is linear, O(n), describing
+a straight line. What we are seeing is that the point at which the curve of the
+quadratic algorithm intersects the straight line of the linear algorithm is well
+above where we usually operate. To make this clearer, consider inputs up to two
+megabytes:</p>
+
+
+<img src="img/06-conclusion.copy-2000000.png"
+     alt="concat vs. join for n &lt;= 2000000" />
+<!--figure copy-2000000
+
+def genstr(i):
+    return 'O'*i
+
+rdef = dict()
+rdef['start'] = 0
+rdef['stop'] = 2000000
+rdef['step'] = 20000
+
+lineprops_concat = {'linewidth':2.0, 'color':'red'}
+lineprops_join = {'linewidth':2.0, 'color':'blue'}
+
+plot(*time_it(copy_concat, genstr, **rdef), **lineprops_concat)
+plot(*time_it(copy_join, genstr, **rdef), **lineprops_join)
+title( 'Two String Copying Algorithms Compared\n'
+     + '(longest string: %s bytes)' % commaize(rdef['stop'])
+      )
+axis(ymin=0, ymax=10.0)
+setp(xlabel('Input (bytes)'), fontweight='bold')
+setp(ylabel('Time (seconds)'), fontweight='bold')
+figtext(0.15, 0.83, "copy_concat", fontsize=12, color="red")
+figtext(0.15, 0.78, "copy_join", fontsize=12, color="blue")
+
+-->
+
+
+<p>Contrary to conventional wisdom, the concatenation form is not only more
+readable than join-based copying, it is actually faster too, for strings smaller
+than about 500 kilobytes.</p>
+
+<p>What, then, have we learned overall? Big O notation is a tool for analysing
+algorithms. It lets you talk about how the resource requirements of an algorithm
+change as the size of the input changes. Such analysis paves the way for
+optimizing your programs, but optimization is always a trade-off between
+competing resources. As such, big O notation, like any tool, requires an
+understanding of what you want to accomplish with it, and it requires skill to
+use properly.</p>
+
+<!--#include file='inc/tail.html' -->

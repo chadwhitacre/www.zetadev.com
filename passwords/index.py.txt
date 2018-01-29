@@ -1,0 +1,69 @@
+#!/usr/local/bin/python2.5
+"""Simple wrapper for apg(1).
+
+Install apg(1) with:
+
+  $ sudo pkg_add -r apg
+
+"""
+import commands
+import os
+import sys
+from os.path import dirname, join
+
+
+DEBUG = 0
+if DEBUG:
+    sys.stdout.write("Content-Type: text/plain\r\n\r\n")
+    for k,v in sorted(os.environ.items()):
+        print k.ljust(24), v
+    raise SystemExit
+
+
+
+
+# Constants
+# =========
+
+LOC = "https://www.zetadev.com/passwords/"
+DIR = dirname(os.environ['SCRIPT_FILENAME'])
+PAGE = open(join(DIR, "template.html"), "r").read()
+CRLF = "\r\n"
+
+
+# Helpers
+# =======
+
+def w(s=''):
+    if s:
+        sys.stdout.write(CRLF.join(s.splitlines()))
+    sys.stdout.write(CRLF)
+
+
+def page(body, head=''):
+    w('Content-Type: text/html')
+    w('Pragma: no-cache')
+    w('Cache-Control: no-store, no-cache')
+    w('Expires: Fri, 30 Oct 1998 14:19:41 GMT') # http://www.mnot.net/cache_docs/#EXPIRES
+    w()
+    w(PAGE % (head, body, "Python"))
+
+
+# Branch
+# ======
+
+if os.environ['SERVER_PORT'] != '443':
+    head = '<meta http-equiv="refresh" content="5; %s" />' % LOC
+    body = ( '<p>The Easy Password Generator is only available over <a '
+           + 'href="%s">an encrypted connection</a> (redirecting '  % LOC
+           + 'presently ...).</p>'
+            )
+    page(body, head)
+else:
+    body = ['<ul>']
+    for passwd in commands.getoutput("apg -a0 -n7 -m8 -x10 -Mncl").splitlines():
+        body.append('<li>%s</li>' % passwd)
+    body.append('<li><a href="/passwords/">more ...</a></li>')
+    body.append('</ul>')
+    page(''.join(body)) # IE7 picks up any whitespace between <li>'s on
+                        # double-click-to-select: annoying!

@@ -1,0 +1,7 @@
+<!--#include file='inc/head.html' -->
+<h1>5. Quadratic: O(n<sup>2</sup>)</h1>
+
+<p class="continue"><a href="06-conclusion.shtml#start">Continue to
+<i>Conclusion</i> &rArr;</a></p>
+
+<!--#include file='inc/tail.html' -->

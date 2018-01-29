@@ -1,0 +1,237 @@
+/*==============================================================================
+
+Do not capitalize:
+
+    - the articles a, an, and the;
+
+    - the prepositions or adverbs at, by, for, of, in, up, on, and to;
+
+    - and the conjunctions and, as, but, if, or, and nor.
+
+In effect, this rule means that words of four or more letters are
+considered principal words and are capitalized.
+
+(http://www.publication.com/aylad/capitalization.htm)
+
+==============================================================================*/
+/* begin imports                                                              */
+
+
+/* end imports                                                                */
+/*============================================================================*/
+/* begin layout                                                               */
+
+body {
+    text-align: center;
+    }
+
+
+#breadcrumbs {
+    /* had to add a div to get margin/padding right */
+    width: 620px;
+    margin: 30px auto 2px;
+    padding: 0;
+    text-align: right;
+    }
+#breadcrumbs .for-spacing {
+    height: 10px;
+    }
+#breadcrumbs ul {
+    margin: 0;
+    padding: 0;
+    }
+#breadcrumbs li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font: bold 10px/10px Arial, sans-serif;
+    }
+#breadcrumbs li a {
+    text-decoration: none;
+    }
+#breadcrumbs li a {
+    color: #0000EE;
+    }
+#breadcrumbs li a:hover {
+    color: #00A359;
+    }
+#breadcrumbs li a:active {
+    color: #FF0000;
+    }
+
+
+#content-wrapper {
+    position: relative;
+    width: 620px;
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid black;
+    }
+#logo {
+    display: block;
+    position: absolute;
+    top: -21px;
+    left: -21px;
+    width: 160px;
+    height: 103px;
+    margin: 0;
+    padding: 0;
+    background: white;
+    }
+#contact-info {
+    margin: 10px 0 0 139px;
+    font: normal 11px/16px "Gill Sans MT", Arial, sans-serif;
+    text-transform: uppercase;
+    }
+#content {
+    padding: 30px 60px;
+    }
+
+#firefox {
+    width: 622px;
+    margin: 0px auto 30px;
+    padding: 0;
+    text-align: right;
+    }
+* html #firefox {
+    width: 620px;
+    margin: 2px auto 30px;
+    }
+
+
+/* end layout                                                                 */
+/*============================================================================*/
+/* begin content styles                                                       */
+
+body, table {
+    font: 12pt/160% "Times New Roman", sans-serif;
+    }
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    line-height: 100%;
+    }
+
+h1 {
+    margin: 0;
+    padding: 0;
+    }
+
+h2 {
+    margin: 0.5em 0 1em;
+    padding: 0;
+    }
+
+h3 {
+    margin: 2em 0 0;
+    padding: 0;
+    }
+
+h1 { font-size: 150%; }
+h2 { font-size: 130%; }
+h3 { font-size: 110%; }
+h4 { font-size:  90%; }
+h5 { font-size:  80%; }
+h6 { font-size:  75%; }
+
+dl, ol, ul {
+    font: normal 10pt/20pt Verdana, sans-serif;
+    }
+
+dl {
+    padding: 0 0 0 2em;
+    }
+
+dt {
+    font-weight: bold;
+    line-height: 100%;
+    margin: 1em 0 0;
+    }
+
+dd {
+    margin: 0.5em 0 1em 1.5em;
+    line-height: 130%;
+    }
+
+dd dl {
+    margin-top: 1em;
+    }
+
+ol.homepage li {
+    margin: 0 0 1em;
+    font: 12pt/160% "Times New Roman", sans-serif;
+    }
+
+a img {
+    border: none;
+    }
+
+li a {
+    }
+
+a:link
+    { color:#0000EE; }
+a:hover
+    { color:#00A359; }
+a:visited
+    { color:#551A8B; }
+a:visited:hover
+    { color:#00A359; }
+a:active
+    { color:#FF0000; }
+
+hr { margin: 3em 0 0; }
+
+pre {
+    margin: 1em;
+    padding: 1em;
+    border: 1px dotted black;
+    overflow: auto;
+    background: #efefef;
+    }
+
+blockquote {
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 0 2em;
+    }
+
+.end {
+    font-style: italic;
+    margin: 3em 0 0;
+    }
+
+.description {
+    font-style: italic;
+    }
+
+.sidebar-right {
+    float: right;
+    width: 180px;
+    margin: 0.5em 0 0 1em;
+    padding: 1em 0 0;
+    border: 1px solid #999;
+    background: #EFEFEF;
+    font: normal 8pt/12pt Trebuchet, Arial, sans-serif;
+    }
+.sidebar-right p {
+    margin: 0;
+    padding: 0 1em 1em;
+    }
+
+
+th {
+    text-align: right;
+    }
+
+
+/* end content styles                                                         */
+/*============================================================================*/
+/* begin page-specific styles                                                       */
+
+
+/* end page-specific styles                                                         */
+/*============================================================================*/

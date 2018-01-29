@@ -1,0 +1,7 @@
+<!--#include file='inc/head.html' -->
+<h1>3. Linear: O(n)</h1>
+
+<p class="continue"><a href="04-loglinear.shtml#start">Continue to
+<i>Loglinear: O(n log n)</i> &rArr;</a></p>
+
+<!--#include file='inc/tail.html' -->

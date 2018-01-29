@@ -1,0 +1,49 @@
+<!--#include file='inc/head.html' -->
+<h1>1. Constant: O(1)</h1>
+
+<p>Constant or O(1) efficiency is the best you can get: no matter how large the
+input, your result comes back in the same amount of time. In real-world
+situations, achieving O(1) efficiency basically means using a dictionary, in
+which you cache the results of your algorithm for pre-determined input
+values.</p>
+
+<p>Wikipedia gives us the example of determining if a number is even or odd.
+Here is an implementation:</p>
+
+<pre>
+def is_even(n):
+  """Given a number, return a boolean.
+  """
+  return (n % 2) == 0
+</pre>
+
+<p>And here is what I get when I run this function for inputs ranging from
+-1,000,000 to 1,000,000:</p>
+
+<img src="img/01-constant.is_even.png"
+     alt="illustration of an O(1) algorithm" />
+
+<!--figure is_even
+
+rdef = dict()
+rdef['start'] = -1000000
+rdef['stop'] = 1000000
+rdef['step'] = 100000
+
+lineprops = {'linewidth':2.0, 'color':'blue'}
+
+plot(*time_it(is_even, lambda i:i, **rdef), **lineprops)
+axis(ymin=0, ymax=0.00002)
+title('Performance of is_even')
+setp(xlabel('Input (value)'), fontweight='bold')
+setp(ylabel('Time (seconds)'), fontweight='bold')
+
+-->
+
+<p>As expected, time stays constant no matter the size of the input.</p>
+
+
+<p class="continue"><a href="02-logarithmic.shtml#start">Continue to
+<i>Logarithmic: O(log n)</i> &rArr;</a></p>
+
+<!--#include file='inc/tail.html' -->

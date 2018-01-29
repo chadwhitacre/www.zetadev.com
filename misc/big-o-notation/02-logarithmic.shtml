@@ -1,0 +1,58 @@
+<!--#include file='inc/head.html' -->
+<h1>2. Logarithmic: O(log n)</h1>
+
+<pre>
+def binsearch(arr, val, start, end):
+  """Returns the index of val in arr.
+  """
+  i = start + ((end - start) / 2)
+  cand = arr[i]
+  if cand == val:
+    return i
+
+  if cand > val:
+    end = i-1
+  else: # cand < val
+    start = i+1
+  return binsearch(arr, val, start, end)
+
+</pre>
+
+<img src="img/02-logarithmic.binary_search.png"
+     alt="illustration of an O(log n) algorithm" />
+
+<!--figure binary_search
+
+import random
+
+def data(i):
+    print i
+    arr = range(i)
+    end = i-1 if i > 0 else 0
+    val = random.randint(0, end)
+    return (arr, val, 0, end)
+
+TEST = 10
+arr, val, start, end = data(TEST)
+for i in range(TEST):
+    assert binsearch(arr, i, start, end) == i
+print
+rdef = dict()
+rdef['start'] = 100000
+rdef['stop'] = 10000000
+rdef['step'] = 100000
+
+lineprops = {'linewidth':2.0, 'color':'blue'}
+
+plot(*time_it(binsearch, data, **rdef), **lineprops)
+#axis(ymin=0, ymax=0.00002)
+title('Performance of binary_search')
+setp(xlabel('Input (size of array)'), fontweight='bold')
+setp(ylabel('Time (seconds)'), fontweight='bold')
+
+-->
+
+<p class="continue"><a href="03-linear.shtml#start">Continue to <i>Linear:
+O(n)</i> &rArr;</a></p>
+
+<!--#include file='inc/tail.html' -->

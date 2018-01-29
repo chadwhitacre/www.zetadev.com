@@ -1,0 +1,115 @@
+<!--#include file='inc/head.html' -->
+<h1>4. Loglinear: O(n log n)</h1>
+
+<pre>
+def heapsort(sortme):
+    """Given a list, sort it using heapsort.
+
+    http://cis.stvincent.edu/html/tutorials/swd/heaps/heaps.html
+
+    """
+
+    nitems = len(sortme)
+    children = lambda i: [((2 * i) + 1), (2 * (i + 1))]
+
+
+    def filter_down(heap, i):
+        """Sort items in heap along the smallest-child path starting at node i.
+        """
+
+        heapsize = len(heap)
+
+
+        # Get child indexes and see if we have a leaf.
+        # ============================================
+
+        lci, rci = children(i)          # lci = left child index
+        if lci >= heapsize:             # we have a leaf node
+            return
+
+
+        # Find the smaller child.
+        # =======================
+
+        if rci < heapsize:              # we have two children
+            lchild, rchild = heap[lci], heap[rci]
+            child, j = (lchild, lci) if lchild < rchild else (rchild, rci)
+        else:                           # we only have one child
+            child, j = heap[lci], lci
+
+
+        # Swap with our child if called for.
+        # ==================================
+
+        me = heap[i]
+        if child < me:
+            heap[i] = child
+            heap[j] = me
+
+
+        # Recurse.
+        # ========
+
+        filter_down(heap, j)
+
+
+    # First, convert to a heap.
+    # =========================
+
+    last_parent = (nitems - 2) / 2
+    for i in range(last_parent, -1, -1):
+        filter_down(sortme, i)
+
+
+    # Then, sort by continually removing the smallest item.
+    # =====================================================
+
+    sorted = []
+    while sortme:
+        sorted.append(sortme.pop(0))
+        filter_down(sortme, 0)
+
+    return sorted
+
+</pre>
+
+<img src="img/04-loglinear.heapsort.png"
+     alt="illustration of an O(n log n) algorithm" />
+
+<!--figure heapsort
+import random
+
+def data(i):
+    m = i*100
+    return [random.randint(0, m) for j in range(i)]
+
+
+d = data(10)
+print
+print d
+print sorted(d)
+d2 = heapsort(d)
+print d2
+
+#rdef = dict()
+#rdef['start'] = 0
+#rdef['stop'] = 100000
+#rdef['step'] = 10000
+#
+#lineprops = {'linewidth':2.0, 'color':'blue'}
+#
+#plot(*time_it(heapsort, data, **rdef), **lineprops)
+##axis(ymin=0, ymax=0.00002)
+#title('Performance of heapsort')
+#setp(xlabel('Input (size of array)'), fontweight='bold')
+#setp(ylabel('Time (seconds)'), fontweight='bold')
+
+-->
+
+<p>As expected, time stays constant no matter the size of the input.</p>
+
+
+<p class="continue"><a href="05-quadratic.shtml#start">Continue to
+<i>Quadratic: O(n<sup>2</sup>)</i> &rArr;</a></p>
+
+<!--#include file='inc/tail.html' -->
